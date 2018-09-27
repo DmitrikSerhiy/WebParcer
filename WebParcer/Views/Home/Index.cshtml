@@ -1,4 +1,4 @@
-﻿@model WebParcer.Models.ParcedPageModel
+﻿@model WebParcer.Models.UnparcedUrlModel
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -9,7 +9,7 @@
     <form asp-action="Titles">
         <div class="form-group row fieldWidth">
             <div class="col-lg-10">
-                <input asp-for="Url" id="urlInput" class="form-control" placeholder="url" />
+                <input id="urlInput" class="form-control" placeholder="url" />
             </div>
             <div class="col-lg-2">
                 <input id="addUrl" type="button" name="AddUrl" value="Add" class="btn btn-default" />
@@ -20,14 +20,14 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">URLS</span>
                 </div>
-                <textarea id="Urls" class="form-control" style="height: 160px;" aria-label="URLS"></textarea>
+                <textarea asp-for="Urls" id="Urls" class="form-control" style="height: 160px;" aria-label="URLS"></textarea>
             </div>
             <div class="col-lg-2 areaDivChild">
                 <input id="clearArea" type="button" name="ClearTextArea" value="Clear" class="btn btn-default" />
             </div>
         </div>
         <div class="form-group buttonM" style="padding-left: 15px;">
-            <input type="submit" class="btn btn-default" />
+            <input id="sub" type="submit" class="btn btn-default" />
         </div>
     </form>
 </div>
@@ -38,6 +38,8 @@
     var area = document.getElementById("Urls");
     var urlInput = document.getElementById("urlInput");
     var clearArea = document.getElementById("clearArea");
+    var sub = document.getElementById("sub");
+
     clearArea.style.visibility = 'hidden';
 
     b.onclick = function () {
