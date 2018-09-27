@@ -8,15 +8,25 @@ using WebParcer.Models;
 
 namespace WebParcer.Controllers
 {
+   // [Controller]
+    [Route("home")]
     public class HomeController : Controller
     {
-        [Route("home/Index")]
+        
+        [HttpGet("index")]
         public IActionResult Index()
         {
             return View();
         }
 
-        
+        [HttpPost("titles")]
+        public IActionResult Titles(ParcedPageModel model)
+        {
+            var list = new List<ParcedPageModel>() { model };
+            return View(list);
+        }
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
